@@ -1,38 +1,56 @@
 # 2526-POO-S7-ANA-PANCHI
 Segundo "B" PROGRAMACION ORIENTADA A OBJETOS-SEMANA7
+Semana 7: Constructores y Destructores en Python  
 
-# Proyecto Sesiones de Usuario en Python
+## Proyecto: Sesiones de Usuario en Python
 
 ## Descripción del Programa
-Este proyecto esta enfocado en el uso de constructores (__init__) y destructores (__del__).  
+Este proyecto está enfocado en el uso de **constructores (`__init__`)** y **destructores (`__del__`)** en Python, aplicando el paradigma de **Programación Orientada a Objetos (POO)** y una arquitectura organizada por capas.
 
-El programa simula un sistema sencillo de Gestión de sesiones de usuario, donde se registran 
-acciones realizadas durante la sesión y se evidencia cuándo se inicia y cierra una sesión.
+El programa simula un sistema sencillo de **gestión de sesiones de usuario**, donde se registran las acciones realizadas durante la sesión y se evidencia claramente cuándo una sesión inicia y cuándo finaliza.
 
-### Objetivos
-- Demostrar cómo se inicializan los atributos de un objeto usando __init__.
-- Mostrar cómo __del__ puede utilizarse para realizar tareas de limpieza o liberar recursos al eliminar un objeto.
-- Organizar el código en capas: modelos, servicios y punto de entrada (main.py).
+## Objetivos
+- Demostrar cómo se inicializan los atributos de un objeto usando el constructor `__init__`.
+- Mostrar cómo el destructor `__del__` puede utilizarse para realizar tareas de limpieza o cierre lógico de recursos.
+- Organizar el código en capas: **modelos**, **servicios** y **punto de entrada (`main.py`)**,
 
-### Explicación de cada componente
+## Explicación del programa
 
-1. modelos/sesion_usuario.py  
-   Contiene la clase `SesionUsuario`, que representa una sesión de usuario.  
-   - Constructor (`__init__`)**: Se ejecuta al crear un objeto e inicializa:
-     - `usuario`: nombre del usuario.
-     - `inicio`: fecha y hora de inicio de sesión.  
-     También imprime en consola que la sesión ha iniciado.  
-   - Destructor (`__del__`): Se ejecuta cuando el objeto se elimina o cuando el programa termina.  
-     Imprime en consola que la sesión ha cerrado, simulando la liberación de recursos.
+### 1. modelos/sesion_usuario.py
+Contiene la clase `SesionUsuario`, que representa una sesión de usuario.
 
-2. servicios/gestor_sesiones.py  
-   Contiene la clase `GestorSesiones`, responsable de gestionar la lógica del sistema:  
-   - `iniciar_sesion(usuario)`: crea un objeto `SesionUsuario`, ejecutando su constructor.  
-   - `realizar_acciones(sesion)`: simula acciones que realiza el usuario durante la sesión.
+- **Constructor (`__init__`)**:
+  - Se ejecuta al crear un objeto.
+  - Inicializa:
+    - `usuario`: nombre del usuario.
+    - `inicio`: fecha y hora de inicio de sesión.
+  - Registra el inicio de la sesión tanto en consola como en el archivo `sesion.log`.
 
-3. main.py  
-   Punto de entrada que muestra el flujo principal del programa:  
-   - Se crea una instancia de `GestorSesiones`.
-   - Se inicia una sesión para un usuario (ejecuta `__init__`).
-   - Se registran acciones simuladas del usuario.
-   - Se elimina el objeto de sesión usando `del`, ejecutando `__del__`.
+- **Destructor (`__del__`)**:
+  - Se ejecuta cuando el objeto se elimina o cuando el programa finaliza.
+  - Registra el cierre de la sesión en consola y en el archivo `sesion.log`, simulando la liberación de recursos.
+
+### 2. servicios/gestor_sesiones.py
+Contiene la clase `GestorSesiones`, responsable de la lógica del sistema.
+
+- `iniciar_sesion(usuario)`: crea un objeto `SesionUsuario`, ejecutando su constructor.
+- `realizar_acciones(sesion)`: simula acciones que el usuario realiza durante la sesión.
+
+### 3. main.py
+Es el punto de entrada del programa.
+
+- Muestra un título y separadores para una mejor visualización.
+- Crea una instancia de `GestorSesiones`.
+- Inicia una sesión de usuario (ejecuta `__init__`).
+- Registra acciones durante la sesión.
+- Elimina el objeto de sesión usando `del`, ejecutando el destructor `__del__`.
+
+
+## Archivo de Registro (sesion.log)
+Al ejecutar el programa se genera automáticamente el archivo **`sesion.log`**, donde se registran:
+
+- Inicio de la sesión (constructor `__init__`)
+- Acciones realizadas
+- Cierre de la sesión (destructor `__del__`)
+
+Este archivo sirve como evidencia de la ejecución correcta del programa.
